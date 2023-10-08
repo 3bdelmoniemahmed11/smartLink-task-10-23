@@ -1,0 +1,57 @@
+<section class="d-flex justify-content-center">
+  <form [formGroup]="addEmployeeForm">
+    <div class="">
+      <div class="mb-4">
+        <h1 class="text-primary">Add Emploee</h1>
+      </div>
+    </div>
+    
+    <div>
+      <label class="form-label" for="name">Name </label>
+      <input
+        type="text"
+        id="name"
+        class="form-control form-control"
+        placeholder="Enter  Name "
+        formControlName="name"
+      />
+    </div>
+
+    <label class="form-label" for="group">Group</label>
+    <select
+      class="form-select"
+      aria-label="Default select example"
+      [(ngModel)]="selectedGroup"
+      name="group"
+      formControlName="group"
+    >
+      <option selected disabled value="">select</option>
+      <option value="HR">HR</option>
+      <option value="Normal">Normal</option>
+    </select>
+
+    <div *ngIf="selectedGroup">
+      <div *ngFor="let field of fields[selectedGroup]">
+        <label class="form-label" [for]="field.id">{{ field.label }}</label>
+        <input
+          type="{{ field.type }}"
+          id="{{ field.id }}"
+          class="form-control form-control"
+          placeholder="{{ field.placeholder }}"
+          name="{{ field.id }}"
+          formControlName="{{ field.id }}"
+        />
+      </div>
+    </div>
+    <div class="text-center text-lg-start mt-4 pt-2">
+      <button
+        type="submit"
+        class="btn btn-primary btn-lg"
+        style="padding-left: 2.5rem; padding-right: 2.5rem"
+        (click)="onSubmit()"
+      >
+        Add
+      </button>
+    </div>
+  </form>
+</section>

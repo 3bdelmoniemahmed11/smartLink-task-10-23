@@ -1,0 +1,80 @@
+<section class="vh-100">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-5">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid"
+          alt="Sample image"
+        />
+      </div>
+      <div class="col-md-5">
+        <form [formGroup]="loginForm">
+          <div
+            class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start"
+          >
+            <div class="mb-4">
+              <h1 class="text-primary">Sign In</h1>
+            </div>
+          </div>
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">Email address</label>
+            <input
+              type="email"
+              id="form3Example3"
+              class="form-control form-control-lg"
+              placeholder="Enter a valid email address"
+              formControlName="email"
+            />
+          </div>
+          <ng-container
+            *ngIf="
+              loginForm.controls.email.hasError('required') &&
+              loginForm.controls.email.touched
+            "
+          >
+            <div class="text-danger">Email is required.</div>
+          </ng-container>
+
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <label class="form-label" for="form3Example4">Password</label>
+            <input
+              type="password"
+              id="form3Example4"
+              class="form-control form-control-lg"
+              placeholder="Enter password"
+              formControlName="password"
+            />
+          </div>
+          <ng-container
+            *ngIf="
+              loginForm.controls.password.hasError('required') &&
+              loginForm.controls.password.touched
+            "
+          >
+            <div class="text-danger">Password is required.</div>
+          </ng-container>
+
+          <ng-container
+            *ngIf="accessdeniedMessage.length > 0"
+          >
+            <div class="text-danger">{{ accessdeniedMessage }}</div>
+          </ng-container>
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button
+              type="submit"
+              class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem"
+              (click)="onSubmit()"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

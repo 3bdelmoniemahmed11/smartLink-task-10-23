@@ -1,0 +1,31 @@
+<section class="d-flex justify-content-center">
+  <form [formGroup]="editEmployeeForm">
+    <div>
+      <div class="mb-4">
+        <h1 class="text-primary">Edit Emploee</h1>
+      </div>
+    </div>
+
+    <div>
+      <label class="form-label" for="name">Name </label>
+      <input
+        type="text"
+        id="name"
+        class="form-control form-control"
+        placeholder="Enter Name "
+        formControlName="name"
+      />
+    </div>
+
+    <div class="text-center text-lg-start mt-4 pt-2">
+      <button
+        type="submit"
+        class="btn btn-primary btn-lg"
+        style="padding-left: 2.5rem; padding-right: 2.5rem"
+        (click)="updateEmployee()"
+      >
+        Edit
+      </button>
+    </div>
+  </form>
+</section>

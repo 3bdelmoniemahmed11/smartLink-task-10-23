@@ -1,0 +1,41 @@
+<section class="d-flex justify-content-center">
+  <form [formGroup]="addEmployeeAttendanceForm">
+    <div class="">
+      <div class="mb-4">
+        <h1 class="text-primary">Add Attendance</h1>
+      </div>
+    </div>
+
+    <label class="form-label" for="name">Employees Name</label>
+    <select
+      class="form-select"
+      aria-label="Default select example"
+      name="name"
+      formControlName="employeeId"
+    >
+      <option selected disabled value="">select</option>
+      <option value="{{ employee.id }}" *ngFor="let employee of employees">
+        {{ employee.name }}
+      </option>
+    </select>
+    <div>
+      <label class="form-label" for="Date">Date </label>
+      <input
+        type="date"
+        id="Date"
+        class="form-control form-control"
+        formControlName="attendanceDate"
+      />
+    </div>
+    <div class="text-center text-lg-start mt-4 pt-2">
+      <button
+        type="submit"
+        class="btn btn-primary btn-lg"
+        style="padding-left: 2.5rem; padding-right: 2.5rem"
+        (click)="onSubmit()"
+      >
+        Add
+      </button>
+    </div>
+  </form>
+</section>
